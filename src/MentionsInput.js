@@ -75,6 +75,7 @@ const propTypes = {
   forceSuggestionsAboveCursor: PropTypes.bool,
   ignoreAccents: PropTypes.bool,
   a11ySuggestionsListLabel: PropTypes.string,
+  loader: PropTypes.element,
 
   value: PropTypes.string,
   onKeyDown: PropTypes.func,
@@ -108,6 +109,7 @@ class MentionsInput extends React.Component {
     ignoreAccents: false,
     singleLine: false,
     allowSuggestionsAboveCursor: false,
+    loader: null,
     onKeyDown: () => null,
     onSelect: () => null,
     onBlur: () => null,
@@ -280,6 +282,7 @@ class MentionsInput extends React.Component {
         onMouseEnter={this.handleSuggestionsMouseEnter}
         isLoading={this.isLoading()}
         isOpened={this.isOpened()}
+        loader={this.props.loader}
         ignoreAccents={this.props.ignoreAccents}
         a11ySuggestionsListLabel={this.props.a11ySuggestionsListLabel}
       >

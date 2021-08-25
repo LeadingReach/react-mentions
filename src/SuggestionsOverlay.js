@@ -19,6 +19,7 @@ class SuggestionsOverlay extends Component {
     scrollFocusedIntoView: PropTypes.bool,
     isLoading: PropTypes.bool,
     isOpened: PropTypes.bool.isRequired,
+    loader: PropTypes.element,
     onSelect: PropTypes.func,
     ignoreAccents: PropTypes.bool,
     containerRef: PropTypes.oneOfType([
@@ -147,7 +148,11 @@ class SuggestionsOverlay extends Component {
       return
     }
 
-    return <LoadingIndicator style={this.props.style('loadingIndicator')} />
+    return (
+      this.props.loader || (
+        <LoadingIndicator style={this.props.style('loadingIndicator')} />
+      )
+    )
   }
 
   handleMouseEnter = (index, ev) => {
