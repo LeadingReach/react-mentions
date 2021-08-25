@@ -6,6 +6,7 @@ import AsyncGithubUserMentions from './AsyncGithubUserMentions'
 import CssModules from './CssModules'
 import Emojis from './Emojis'
 import CutCopyPaste from './CutCopyPaste'
+import CustomMentionRenderer from './CustomMentionRenderer'
 import MultipleTrigger from './MultipleTrigger'
 import Scrollable from './Scrollable'
 import SingleLine from './SingleLine'
@@ -65,6 +66,7 @@ export default function Examples() {
         <SuggestionPortal data={users} />
         <BottomGuard data={users} />
         <CustomLoader data={users} />
+        <CustomMentionRenderer data={users} />
       </div>
     </StylesViaJss>
   )
