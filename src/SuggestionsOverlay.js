@@ -19,7 +19,7 @@ class SuggestionsOverlay extends Component {
     scrollFocusedIntoView: PropTypes.bool,
     isLoading: PropTypes.bool,
     isOpened: PropTypes.bool.isRequired,
-    loader: PropTypes.element,
+    loader: PropTypes.func,
     onSelect: PropTypes.func,
     ignoreAccents: PropTypes.bool,
     containerRef: PropTypes.oneOfType([
@@ -98,10 +98,9 @@ class SuggestionsOverlay extends Component {
           aria-label={a11ySuggestionsListLabel}
           {...style('list')}
         >
+          {this.renderLoadingIndicator()}
           {this.renderSuggestions()}
         </ul>
-
-        {this.renderLoadingIndicator()}
       </div>
     )
   }
@@ -149,7 +148,7 @@ class SuggestionsOverlay extends Component {
     }
 
     return (
-      this.props.loader || (
+      this.props.loader() || (
         <LoadingIndicator style={this.props.style('loadingIndicator')} />
       )
     )

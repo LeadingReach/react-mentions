@@ -75,8 +75,7 @@ const propTypes = {
   forceSuggestionsAboveCursor: PropTypes.bool,
   ignoreAccents: PropTypes.bool,
   a11ySuggestionsListLabel: PropTypes.string,
-  loader: PropTypes.element,
-
+  loader: PropTypes.func,
   value: PropTypes.string,
   onKeyDown: PropTypes.func,
   onSelect: PropTypes.func,
@@ -959,7 +958,14 @@ class MentionsInput extends React.Component {
       displayTransform,
       appendSpaceOnAdd,
       onAdd,
+      beforeAdd,
     } = mentionsChild.props
+
+    // LR-Patch: Before add handler
+    if (beforeAdd) {
+      const res = beforeAdd(id, display)
+      if (res) return
+    }
 
     const start = mapPlainTextIndex(value, config, querySequenceStart, 'START')
     const end = start + querySequenceEnd - querySequenceStart

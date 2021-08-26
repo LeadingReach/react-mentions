@@ -6,9 +6,9 @@ const defaultStyle = {
   fontWeight: 'inherit',
 }
 
-const Mention = ({ display, style, className, classNames, render }) => {
-  if(render) {
-    return render(display);
+const Mention = ({ display, id, style, className, classNames, render }) => {
+  if (render) {
+    return render(id, display)
   }
   const styles = useStyles(defaultStyle, { style, className, classNames })
   return <strong {...styles}>{display}</strong>
@@ -27,10 +27,10 @@ Mention.propTypes = {
    * ```
    */
   onAdd: PropTypes.func,
+  // Called before a mention is added
+  beforeAdd: PropTypes.func,
   onRemove: PropTypes.func,
-
   renderSuggestion: PropTypes.func,
-
   trigger: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.instanceOf(RegExp),
@@ -41,9 +41,8 @@ Mention.propTypes = {
    * If set to `true` spaces will not interrupt matching suggestions
    */
   allowSpaceInQuery: PropTypes.bool,
-
   isLoading: PropTypes.bool,
-  render: PropTypes.func
+  render: PropTypes.func,
 }
 
 Mention.defaultProps = {
@@ -52,12 +51,13 @@ Mention.defaultProps = {
   displayTransform: function(id, display) {
     return display || id
   },
+  beforeAdd: () => null,
   onAdd: () => null,
   onRemove: () => null,
   renderSuggestion: null,
   isLoading: false,
   appendSpaceOnAdd: false,
-  render: null
+  render: null,
 }
 
 export default Mention

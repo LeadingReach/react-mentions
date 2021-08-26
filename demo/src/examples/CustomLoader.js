@@ -40,6 +40,10 @@ function CustomLoader({ value, data, onChange }) {
     })
   }
 
+  const renderLoader = () => {
+    return <span style={loaderStyle}>Loading...</span>
+  }
+
   return (
     <div>
       <h3>Custom loader component</h3>
@@ -48,7 +52,7 @@ function CustomLoader({ value, data, onChange }) {
         value={value}
         onChange={onChange}
         style={styles}
-        loader={<span style={loaderStyle}>Loading...</span>}
+        loader={renderLoader}
       >
         <Mention
           displayTransform={(login) => `@${login}`}

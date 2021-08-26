@@ -54,6 +54,10 @@ export default function Examples() {
   return (
     <StylesViaJss>
       <div>
+        <AsyncGithubUserMentions data={users} />
+        <CustomLoader data={users} />
+        <CustomMentionRenderer data={users} />
+        <hr />
         <MultipleTrigger data={users} />
         <SingleLine data={users} />
         <SingleLineIgnoringAccents data={users} />
@@ -61,12 +65,9 @@ export default function Examples() {
         <Advanced data={users} />
         <CutCopyPaste data={users} />
         <CssModules data={users} />
-        <AsyncGithubUserMentions data={users} />
         <Emojis data={users} />
         <SuggestionPortal data={users} />
         <BottomGuard data={users} />
-        <CustomLoader data={users} />
-        <CustomMentionRenderer data={users} />
       </div>
     </StylesViaJss>
   )

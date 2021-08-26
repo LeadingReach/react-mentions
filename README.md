@@ -65,7 +65,7 @@ The `MentionsInput` supports the following props for configuring the widget:
 | inputRef                    | React ref                                               | undefined      | Accepts a React ref to forward to the underlying input element                         |
 | allowSuggestionsAboveCursor | boolean                                                 | false          | Renders the SuggestionList above the cursor if there is not enough space below         |
 | a11ySuggestionsListLabel    | string                                                  | `''`           | This label would be exposed to screen readers when suggestion popup appears            |
-| loader                      | element                                                 | null           | An element to use as a loading indicator                                               |
+| loader                      | function                                                | null           | Allows to use a custom loader                                                          |
 
 Each data source is configured using a `Mention` component, which has the following props:
 
@@ -77,10 +77,10 @@ Each data source is configured using a `Mention` component, which has the follow
 | markup           | string                                                       | `'@[__display__](__id__)'`                  | A template string for the markup to use for mentions                                                                                                   |
 | displayTransform | function (id, display)                                       | returns `display`                           | Accepts a function for customizing the string that is displayed for a mention                                                                          |
 | regex            | RegExp                                                       | automatically derived from `markup` pattern | Allows providing a custom regular expression for parsing your markup and extracting the placeholder interpolations (optional)                          |  |
-| onAdd            | function (id, display, startPos, endPos)                                       | empty function                              | Callback invoked when a suggestion has been added (optional)                                                                                           |
+| onAdd            | function (id, display, startPos, endPos)                     | empty function                              | Callback invoked when a suggestion has been added (optional)                                                                                           |
 | appendSpaceOnAdd | boolean                                                      | `false`                                     | Append a space when a suggestion has been added (optional)                                                                                             |
 | isLoading        | boolean                                                      | `false`                                     | Specifies whether the mention suggestions are being loaded. Used to display a loading indicator (optional)                                             |
-| render           | function (display)                                           | `null`                                     | Allows customizing how mention value is rendered (optional)                                                                                             |
+| render           | function (id, display)                                       | `null`                                      | Allows customizing how mention value is rendered (optional)                                                                                             |
 
 If a function is passed as the `data` prop, that function will be called with the current search query as first, and a callback function as second argument. The callback can be used to provide results asynchronously, e.g., after fetch requests. (It can even be called multiple times to update the list of suggestions.)
 
