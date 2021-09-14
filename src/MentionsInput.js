@@ -964,7 +964,11 @@ class MentionsInput extends React.Component {
     // LR-Patch: Before add handler
     if (beforeAdd) {
       const res = beforeAdd(id, display)
-      if (res) return
+      if (res) {
+        // Re-run getData
+        this.updateMentionsQueries(getPlainText(this.inputElement.value, config), this.inputElement.selectionStart)
+        return
+      }
     }
 
     const start = mapPlainTextIndex(value, config, querySequenceStart, 'START')

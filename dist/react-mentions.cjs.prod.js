@@ -8,7 +8,7 @@ Object.defineProperty(exports, "__esModule", {
   value: !0
 });
 
-var _toConsumableArray = _interopDefault(require("@babel/runtime/helpers/toConsumableArray")), _extends = _interopDefault(require("@babel/runtime/helpers/extends")), _classCallCheck = _interopDefault(require("@babel/runtime/helpers/classCallCheck")), _createClass = _interopDefault(require("@babel/runtime/helpers/createClass")), _assertThisInitialized = _interopDefault(require("@babel/runtime/helpers/assertThisInitialized")), _inherits = _interopDefault(require("@babel/runtime/helpers/inherits")), _possibleConstructorReturn = _interopDefault(require("@babel/runtime/helpers/possibleConstructorReturn")), _getPrototypeOf = _interopDefault(require("@babel/runtime/helpers/getPrototypeOf")), _defineProperty = _interopDefault(require("@babel/runtime/helpers/defineProperty")), React = require("react"), React__default = _interopDefault(React), invariant = _interopDefault(require("invariant")), _slicedToArray = _interopDefault(require("@babel/runtime/helpers/slicedToArray")), _objectWithoutProperties = _interopDefault(require("@babel/runtime/helpers/objectWithoutProperties")), useStyles = require("substyle"), useStyles__default = _interopDefault(useStyles), PropTypes = _interopDefault(require("prop-types")), ReactDOM = _interopDefault(require("react-dom")), escapeRegex = function(str) {
+var _toConsumableArray = _interopDefault(require("@babel/runtime/helpers/toConsumableArray")), _extends = _interopDefault(require("@babel/runtime/helpers/extends")), _classCallCheck = _interopDefault(require("@babel/runtime/helpers/classCallCheck")), _createClass = _interopDefault(require("@babel/runtime/helpers/createClass")), _possibleConstructorReturn = _interopDefault(require("@babel/runtime/helpers/possibleConstructorReturn")), _getPrototypeOf = _interopDefault(require("@babel/runtime/helpers/getPrototypeOf")), _assertThisInitialized = _interopDefault(require("@babel/runtime/helpers/assertThisInitialized")), _inherits = _interopDefault(require("@babel/runtime/helpers/inherits")), _defineProperty = _interopDefault(require("@babel/runtime/helpers/defineProperty")), React = require("react"), React__default = _interopDefault(React), invariant = _interopDefault(require("invariant")), _slicedToArray = _interopDefault(require("@babel/runtime/helpers/slicedToArray")), _objectWithoutProperties = _interopDefault(require("@babel/runtime/helpers/objectWithoutProperties")), useStyles = require("substyle"), useStyles__default = _interopDefault(useStyles), PropTypes = _interopDefault(require("prop-types")), ReactDOM = _interopDefault(require("react-dom")), escapeRegex = function(str) {
   return str.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 }, PLACEHOLDERS = {
   id: "__id__",
@@ -416,12 +416,12 @@ var _toConsumableArray = _interopDefault(require("@babel/runtime/helpers/toConsu
     return obj.hasOwnProperty(k) && !keys.includes(k) && void 0 !== obj[k] && (acc[k] = obj[k]), 
     acc;
   }, {});
-}, _excluded = [ "style", "className", "classNames" ];
+};
 
 function createDefaultStyle(defaultStyle, getModifiers) {
   return function(ComponentToWrap) {
     var DefaultStyleEnhancer = function(_ref) {
-      var style = _ref.style, className = _ref.className, classNames = _ref.classNames, rest = _objectWithoutProperties(_ref, _excluded), modifiers = getModifiers ? getModifiers(rest) : void 0, styles = useStyles__default(defaultStyle, {
+      var style = _ref.style, className = _ref.className, classNames = _ref.classNames, rest = _objectWithoutProperties(_ref, [ "style", "className", "classNames" ]), modifiers = getModifiers ? getModifiers(rest) : void 0, styles = useStyles__default(defaultStyle, {
         style: style,
         className: className,
         classNames: classNames
@@ -435,38 +435,12 @@ function createDefaultStyle(defaultStyle, getModifiers) {
   };
 }
 
-function _createSuper(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct();
-  return function() {
-    var result, Super = _getPrototypeOf(Derived);
-    if (hasNativeReflectConstruct) {
-      var NewTarget = _getPrototypeOf(this).constructor;
-      result = Reflect.construct(Super, arguments, NewTarget);
-    } else result = Super.apply(this, arguments);
-    return _possibleConstructorReturn(this, result);
-  };
-}
-
-function _isNativeReflectConstruct() {
-  if ("undefined" == typeof Reflect || !Reflect.construct) return !1;
-  if (Reflect.construct.sham) return !1;
-  if ("function" == typeof Proxy) return !0;
-  try {
-    return Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {})), 
-    !0;
-  } catch (e) {
-    return !1;
-  }
-}
-
 var _generateComponentKey = function(usedKeys, id) {
   return usedKeys.hasOwnProperty(id) ? usedKeys[id]++ : usedKeys[id] = 0, id + "_" + usedKeys[id];
 }, Highlighter = function(_Component) {
-  _inherits(Highlighter, _Component);
-  var _super = _createSuper(Highlighter);
   function Highlighter() {
     var _this;
-    return _classCallCheck(this, Highlighter), _this = _super.apply(this, arguments), 
+    return _classCallCheck(this, Highlighter), _this = _possibleConstructorReturn(this, _getPrototypeOf(Highlighter).apply(this, arguments)), 
     _defineProperty(_assertThisInitialized(_this), "setCaretElement", function(el) {
       _this.caretElement = el;
     }), _this.state = {
@@ -474,7 +448,7 @@ var _generateComponentKey = function(usedKeys, id) {
       top: void 0
     }, _this;
   }
-  return _createClass(Highlighter, [ {
+  return _inherits(Highlighter, _Component), _createClass(Highlighter, [ {
     key: "componentDidMount",
     value: function() {
       this.notifyCaretPosition();
@@ -581,39 +555,11 @@ var styled = createDefaultStyle({
   return {
     "&singleLine": props.singleLine
   };
-}), Highlighter$1 = styled(Highlighter);
-
-function _createSuper$1(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct$1();
-  return function() {
-    var result, Super = _getPrototypeOf(Derived);
-    if (hasNativeReflectConstruct) {
-      var NewTarget = _getPrototypeOf(this).constructor;
-      result = Reflect.construct(Super, arguments, NewTarget);
-    } else result = Super.apply(this, arguments);
-    return _possibleConstructorReturn(this, result);
-  };
-}
-
-function _isNativeReflectConstruct$1() {
-  if ("undefined" == typeof Reflect || !Reflect.construct) return !1;
-  if (Reflect.construct.sham) return !1;
-  if ("function" == typeof Proxy) return !0;
-  try {
-    return Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {})), 
-    !0;
-  } catch (e) {
-    return !1;
-  }
-}
-
-var Suggestion = function(_Component) {
-  _inherits(Suggestion, _Component);
-  var _super = _createSuper$1(Suggestion);
+}), Highlighter$1 = styled(Highlighter), Suggestion = function(_Component) {
   function Suggestion() {
-    return _classCallCheck(this, Suggestion), _super.apply(this, arguments);
+    return _classCallCheck(this, Suggestion), _possibleConstructorReturn(this, _getPrototypeOf(Suggestion).apply(this, arguments));
   }
-  return _createClass(Suggestion, [ {
+  return _inherits(Suggestion, _Component), _createClass(Suggestion, [ {
     key: "render",
     value: function() {
       var rest = omit(this.props, [ "style", "classNames", "className" ], keys(Suggestion.propTypes));
@@ -672,38 +618,13 @@ function LoadingIndicator() {
   return React__default.createElement("div", styles, React__default.createElement("div", spinnerStyles, React__default.createElement("div", spinnerStyles([ "element", "element1" ])), React__default.createElement("div", spinnerStyles([ "element", "element2" ])), React__default.createElement("div", spinnerStyles([ "element", "element3" ])), React__default.createElement("div", spinnerStyles([ "element", "element4" ])), React__default.createElement("div", spinnerStyles([ "element", "element5" ]))));
 }
 
-function _createSuper$2(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct$2();
-  return function() {
-    var result, Super = _getPrototypeOf(Derived);
-    if (hasNativeReflectConstruct) {
-      var NewTarget = _getPrototypeOf(this).constructor;
-      result = Reflect.construct(Super, arguments, NewTarget);
-    } else result = Super.apply(this, arguments);
-    return _possibleConstructorReturn(this, result);
-  };
-}
-
-function _isNativeReflectConstruct$2() {
-  if ("undefined" == typeof Reflect || !Reflect.construct) return !1;
-  if (Reflect.construct.sham) return !1;
-  if ("function" == typeof Proxy) return !0;
-  try {
-    return Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {})), 
-    !0;
-  } catch (e) {
-    return !1;
-  }
-}
-
 var SuggestionsOverlay = function(_Component) {
-  _inherits(SuggestionsOverlay, _Component);
-  var _super = _createSuper$2(SuggestionsOverlay);
   function SuggestionsOverlay() {
-    var _this;
+    var _getPrototypeOf2, _this;
     _classCallCheck(this, SuggestionsOverlay);
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) args[_key] = arguments[_key];
-    return _this = _super.call.apply(_super, [ this ].concat(args)), _defineProperty(_assertThisInitialized(_this), "handleMouseEnter", function(index, ev) {
+    return _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(SuggestionsOverlay)).call.apply(_getPrototypeOf2, [ this ].concat(args))), 
+    _defineProperty(_assertThisInitialized(_this), "handleMouseEnter", function(index, ev) {
       _this.props.onMouseEnter && _this.props.onMouseEnter(index);
     }), _defineProperty(_assertThisInitialized(_this), "select", function(suggestion, queryInfo) {
       _this.props.onSelect(suggestion, queryInfo);
@@ -711,7 +632,7 @@ var SuggestionsOverlay = function(_Component) {
       _this.ulElement = el;
     }), _this;
   }
-  return _createClass(SuggestionsOverlay, [ {
+  return _inherits(SuggestionsOverlay, _Component), _createClass(SuggestionsOverlay, [ {
     key: "componentDidUpdate",
     value: function() {
       if (this.ulElement && !(this.ulElement.offsetHeight >= this.ulElement.scrollHeight) && this.props.scrollFocusedIntoView) {
@@ -833,37 +754,13 @@ function ownKeys(object, enumerableOnly) {
 function _objectSpread(target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = null != arguments[i] ? arguments[i] : {};
-    i % 2 ? ownKeys(Object(source), !0).forEach(function(key) {
+    i % 2 ? ownKeys(source, !0).forEach(function(key) {
       _defineProperty(target, key, source[key]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function(key) {
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(source).forEach(function(key) {
       Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
     });
   }
   return target;
-}
-
-function _createSuper$3(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct$3();
-  return function() {
-    var result, Super = _getPrototypeOf(Derived);
-    if (hasNativeReflectConstruct) {
-      var NewTarget = _getPrototypeOf(this).constructor;
-      result = Reflect.construct(Super, arguments, NewTarget);
-    } else result = Super.apply(this, arguments);
-    return _possibleConstructorReturn(this, result);
-  };
-}
-
-function _isNativeReflectConstruct$3() {
-  if ("undefined" == typeof Reflect || !Reflect.construct) return !1;
-  if (Reflect.construct.sham) return !1;
-  if ("function" == typeof Proxy) return !0;
-  try {
-    return Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {})), 
-    !0;
-  } catch (e) {
-    return !1;
-  }
 }
 
 var makeTriggerRegex = function(trigger) {
@@ -904,16 +801,14 @@ var makeTriggerRegex = function(trigger) {
   }) ]),
   children: PropTypes.oneOfType([ PropTypes.element, PropTypes.arrayOf(PropTypes.element) ]).isRequired
 }, MentionsInput = function(_React$Component) {
-  _inherits(MentionsInput, _React$Component);
-  var _super = _createSuper$3(MentionsInput);
   function MentionsInput(_props) {
     var _this;
-    return _classCallCheck(this, MentionsInput), _this = _super.call(this, _props), 
+    return _classCallCheck(this, MentionsInput), _this = _possibleConstructorReturn(this, _getPrototypeOf(MentionsInput).call(this, _props)), 
     _defineProperty(_assertThisInitialized(_this), "setContainerElement", function(el) {
       _this.containerElement = el;
     }), _defineProperty(_assertThisInitialized(_this), "getInputProps", function() {
       var _this$props = _this.props, readOnly = _this$props.readOnly, disabled = _this$props.disabled, style = _this$props.style;
-      return _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, omit(_this.props, [ "style", "classNames", "className" ], keys(propTypes))), style("input")), {}, {
+      return _objectSpread({}, omit(_this.props, [ "style", "classNames", "className" ], keys(propTypes)), {}, style("input"), {
         value: _this.getPlainText()
       }, !readOnly && !disabled && {
         onChange: _this.handleChange,
@@ -923,7 +818,7 @@ var makeTriggerRegex = function(trigger) {
         onCompositionStart: _this.handleCompositionStart,
         onCompositionEnd: _this.handleCompositionEnd,
         onScroll: _this.updateHighlighterScroll
-      }), _this.isOpened() && {
+      }, {}, _this.isOpened() && {
         role: "combobox",
         "aria-controls": _this.uuidSuggestionsOverlay,
         "aria-expanded": !0,
@@ -1149,7 +1044,7 @@ var makeTriggerRegex = function(trigger) {
       syncResult instanceof Array && _this.updateSuggestions(_this._queryId, childIndex, query, querySequenceStart, querySequenceEnd, plainTextValue, syncResult);
     }), _defineProperty(_assertThisInitialized(_this), "updateSuggestions", function(queryId, childIndex, query, querySequenceStart, querySequenceEnd, plainTextValue, results) {
       if (queryId === _this._queryId) {
-        _this.suggestions = _objectSpread(_objectSpread({}, _this.suggestions), {}, _defineProperty({}, childIndex, {
+        _this.suggestions = _objectSpread({}, _this.suggestions, _defineProperty({}, childIndex, {
           queryInfo: {
             childIndex: childIndex,
             query: query,
@@ -1167,7 +1062,7 @@ var makeTriggerRegex = function(trigger) {
       }
     }), _defineProperty(_assertThisInitialized(_this), "addMention", function(_ref2, _ref3) {
       var id = _ref2.id, display = _ref2.display, childIndex = _ref3.childIndex, querySequenceStart = _ref3.querySequenceStart, querySequenceEnd = _ref3.querySequenceEnd, plainTextValue = _ref3.plainTextValue, value = _this.props.value || "", config = readConfigFromChildren(_this.props.children), _mentionsChild$props = React.Children.toArray(_this.props.children)[childIndex].props, markup = _mentionsChild$props.markup, displayTransform = _mentionsChild$props.displayTransform, appendSpaceOnAdd = _mentionsChild$props.appendSpaceOnAdd, onAdd = _mentionsChild$props.onAdd, beforeAdd = _mentionsChild$props.beforeAdd;
-      if (beforeAdd && beforeAdd(id, display)) return;
+      if (beforeAdd && beforeAdd(id, display)) return void _this.updateMentionsQueries(getPlainText(_this.inputElement.value, config), _this.inputElement.selectionStart);
       var start = mapPlainTextIndex(value, config, querySequenceStart, "START"), end = start + querySequenceEnd - querySequenceStart, insert = makeMentionsMarkup(markup, id, display);
       appendSpaceOnAdd && (insert += " ");
       var newValue = spliceString(value, start, end, insert);
@@ -1206,7 +1101,7 @@ var makeTriggerRegex = function(trigger) {
       suggestionsPosition: {}
     }, _this;
   }
-  return _createClass(MentionsInput, [ {
+  return _inherits(MentionsInput, _React$Component), _createClass(MentionsInput, [ {
     key: "componentDidMount",
     value: function() {
       document.addEventListener("copy", this.handleCopy), document.addEventListener("cut", this.handleCut), 
@@ -1239,7 +1134,7 @@ var makeTriggerRegex = function(trigger) {
       if (event.target === this.inputElement && this.supportsClipboardActions(event)) {
         event.preventDefault();
         var _this$state3 = this.state, selectionStart = _this$state3.selectionStart, selectionEnd = _this$state3.selectionEnd, _this$props7 = this.props, value = _this$props7.value, children = _this$props7.children, config = readConfigFromChildren(children), markupStartIndex = mapPlainTextIndex(value, config, selectionStart, "START"), markupEndIndex = mapPlainTextIndex(value, config, selectionEnd, "END"), pastedMentions = event.clipboardData.getData("text/react-mentions"), pastedData = event.clipboardData.getData("text/plain"), newValue = spliceString(value, markupStartIndex, markupEndIndex, pastedMentions || pastedData).replace(/\r/g, ""), newPlainTextValue = getPlainText(newValue, config), eventMock = {
-          target: _objectSpread(_objectSpread({}, event.target), {}, {
+          target: _objectSpread({}, event.target, {
             value: newValue
           })
         };
@@ -1270,7 +1165,7 @@ var makeTriggerRegex = function(trigger) {
       if (event.target === this.inputElement && this.supportsClipboardActions(event)) {
         event.preventDefault(), this.saveSelectionToClipboard(event);
         var _this$state5 = this.state, selectionStart = _this$state5.selectionStart, selectionEnd = _this$state5.selectionEnd, _this$props9 = this.props, children = _this$props9.children, value = _this$props9.value, config = readConfigFromChildren(children), markupStartIndex = mapPlainTextIndex(value, config, selectionStart, "START"), markupEndIndex = mapPlainTextIndex(value, config, selectionEnd, "END"), newValue = [ value.slice(0, markupStartIndex), value.slice(markupEndIndex) ].join(""), newPlainTextValue = getPlainText(newValue, config), eventMock = {
-          target: _objectSpread(_objectSpread({}, event.target), {}, {
+          target: _objectSpread({}, event.target, {
             value: newPlainTextValue
           })
         };

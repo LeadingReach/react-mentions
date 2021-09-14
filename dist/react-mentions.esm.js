@@ -2,10 +2,10 @@ import _toConsumableArray from '@babel/runtime/helpers/esm/toConsumableArray';
 import _extends from '@babel/runtime/helpers/esm/extends';
 import _classCallCheck from '@babel/runtime/helpers/esm/classCallCheck';
 import _createClass from '@babel/runtime/helpers/esm/createClass';
-import _assertThisInitialized from '@babel/runtime/helpers/esm/assertThisInitialized';
-import _inherits from '@babel/runtime/helpers/esm/inherits';
 import _possibleConstructorReturn from '@babel/runtime/helpers/esm/possibleConstructorReturn';
 import _getPrototypeOf from '@babel/runtime/helpers/esm/getPrototypeOf';
+import _assertThisInitialized from '@babel/runtime/helpers/esm/assertThisInitialized';
+import _inherits from '@babel/runtime/helpers/esm/inherits';
 import _defineProperty from '@babel/runtime/helpers/esm/defineProperty';
 import React, { Children, Component } from 'react';
 import invariant from 'invariant';
@@ -647,15 +647,13 @@ var omit = function omit(obj) {
   }, {});
 };
 
-var _excluded = ["style", "className", "classNames"];
-
 function createDefaultStyle(defaultStyle, getModifiers) {
   var enhance = function enhance(ComponentToWrap) {
     var DefaultStyleEnhancer = function DefaultStyleEnhancer(_ref) {
       var style = _ref.style,
           className = _ref.className,
           classNames = _ref.classNames,
-          rest = _objectWithoutProperties(_ref, _excluded);
+          rest = _objectWithoutProperties(_ref, ["style", "className", "classNames"]);
 
       var modifiers = getModifiers ? getModifiers(rest) : undefined;
       var styles = useStyles(defaultStyle, {
@@ -663,7 +661,7 @@ function createDefaultStyle(defaultStyle, getModifiers) {
         className: className,
         classNames: classNames
       }, modifiers);
-      return /*#__PURE__*/React.createElement(ComponentToWrap, _extends({}, rest, {
+      return React.createElement(ComponentToWrap, _extends({}, rest, {
         style: styles
       }));
     };
@@ -676,10 +674,6 @@ function createDefaultStyle(defaultStyle, getModifiers) {
   return enhance;
 }
 
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
 var _generateComponentKey = function _generateComponentKey(usedKeys, id) {
   if (!usedKeys.hasOwnProperty(id)) {
     usedKeys[id] = 0;
@@ -690,17 +684,17 @@ var _generateComponentKey = function _generateComponentKey(usedKeys, id) {
   return id + '_' + usedKeys[id];
 };
 
-var Highlighter = /*#__PURE__*/function (_Component) {
+var Highlighter =
+/*#__PURE__*/
+function (_Component) {
   _inherits(Highlighter, _Component);
-
-  var _super = _createSuper(Highlighter);
 
   function Highlighter() {
     var _this;
 
     _classCallCheck(this, Highlighter);
 
-    _this = _super.apply(this, arguments);
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Highlighter).apply(this, arguments));
 
     _defineProperty(_assertThisInitialized(_this), "setCaretElement", function (el) {
       _this.caretElement = el;
@@ -803,7 +797,7 @@ var Highlighter = /*#__PURE__*/function (_Component) {
         resultComponents.push(this.renderHighlighterCaret(components));
       }
 
-      return /*#__PURE__*/React.createElement("div", _extends({}, style, {
+      return React.createElement("div", _extends({}, style, {
         ref: containerRef
       }), resultComponents);
     }
@@ -811,7 +805,7 @@ var Highlighter = /*#__PURE__*/function (_Component) {
     key: "renderSubstring",
     value: function renderSubstring(string, key) {
       // set substring span to hidden, so that Emojis are not shown double in Mobile Safari
-      return /*#__PURE__*/React.createElement("span", _extends({}, this.props.style('substring'), {
+      return React.createElement("span", _extends({}, this.props.style('substring'), {
         key: key
       }), string);
     } // Returns a clone of the Mention child applicable for the specified type to be rendered inside the highlighter
@@ -825,13 +819,13 @@ var Highlighter = /*#__PURE__*/function (_Component) {
         key: key
       };
       var child = Children.toArray(this.props.children)[mentionChildIndex];
-      return /*#__PURE__*/React.cloneElement(child, props);
+      return React.cloneElement(child, props);
     } // Renders an component to be inserted in the highlighter at the current caret position
 
   }, {
     key: "renderHighlighterCaret",
     value: function renderHighlighterCaret(children) {
-      return /*#__PURE__*/React.createElement("span", _extends({}, this.props.style('caret'), {
+      return React.createElement("span", _extends({}, this.props.style('caret'), {
         ref: this.setCaretElement,
         key: "caret"
       }), children);
@@ -880,19 +874,15 @@ var styled = createDefaultStyle({
 });
 var Highlighter$1 = styled(Highlighter);
 
-function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _isNativeReflectConstruct$1() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-var Suggestion = /*#__PURE__*/function (_Component) {
+var Suggestion =
+/*#__PURE__*/
+function (_Component) {
   _inherits(Suggestion, _Component);
-
-  var _super = _createSuper$1(Suggestion);
 
   function Suggestion() {
     _classCallCheck(this, Suggestion);
 
-    return _super.apply(this, arguments);
+    return _possibleConstructorReturn(this, _getPrototypeOf(Suggestion).apply(this, arguments));
   }
 
   _createClass(Suggestion, [{
@@ -900,7 +890,7 @@ var Suggestion = /*#__PURE__*/function (_Component) {
     value: function render() {
       var rest = omit(this.props, ['style', 'classNames', 'className'], // substyle props
       keys(Suggestion.propTypes));
-      return /*#__PURE__*/React.createElement("li", _extends({
+      return React.createElement("li", _extends({
         id: this.props.id,
         role: "option",
         "aria-selected": this.props.focused
@@ -952,10 +942,10 @@ var Suggestion = /*#__PURE__*/function (_Component) {
       var i = getSubstringIndex(display, query, ignoreAccents);
 
       if (i === -1) {
-        return /*#__PURE__*/React.createElement("span", style('display'), display);
+        return React.createElement("span", style('display'), display);
       }
 
-      return /*#__PURE__*/React.createElement("span", style('display'), display.substring(0, i), /*#__PURE__*/React.createElement("b", style('highlight'), display.substring(i, i + query.length)), display.substring(i + query.length));
+      return React.createElement("span", style('display'), display.substring(0, i), React.createElement("b", style('highlight'), display.substring(i, i + query.length)), display.substring(i + query.length));
     }
   }]);
 
@@ -987,19 +977,17 @@ var Suggestion$1 = styled$1(Suggestion);
 function LoadingIndicator() {
   var styles = useStyles();
   var spinnerStyles = styles('spinner');
-  return /*#__PURE__*/React.createElement("div", styles, /*#__PURE__*/React.createElement("div", spinnerStyles, /*#__PURE__*/React.createElement("div", spinnerStyles(['element', 'element1'])), /*#__PURE__*/React.createElement("div", spinnerStyles(['element', 'element2'])), /*#__PURE__*/React.createElement("div", spinnerStyles(['element', 'element3'])), /*#__PURE__*/React.createElement("div", spinnerStyles(['element', 'element4'])), /*#__PURE__*/React.createElement("div", spinnerStyles(['element', 'element5']))));
+  return React.createElement("div", styles, React.createElement("div", spinnerStyles, React.createElement("div", spinnerStyles(['element', 'element1'])), React.createElement("div", spinnerStyles(['element', 'element2'])), React.createElement("div", spinnerStyles(['element', 'element3'])), React.createElement("div", spinnerStyles(['element', 'element4'])), React.createElement("div", spinnerStyles(['element', 'element5']))));
 }
 
-function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _isNativeReflectConstruct$2() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-var SuggestionsOverlay = /*#__PURE__*/function (_Component) {
+var SuggestionsOverlay =
+/*#__PURE__*/
+function (_Component) {
   _inherits(SuggestionsOverlay, _Component);
 
-  var _super = _createSuper$2(SuggestionsOverlay);
-
   function SuggestionsOverlay() {
+    var _getPrototypeOf2;
+
     var _this;
 
     _classCallCheck(this, SuggestionsOverlay);
@@ -1008,7 +996,7 @@ var SuggestionsOverlay = /*#__PURE__*/function (_Component) {
       args[_key] = arguments[_key];
     }
 
-    _this = _super.call.apply(_super, [this].concat(args));
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(SuggestionsOverlay)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_this), "handleMouseEnter", function (index, ev) {
       if (_this.props.onMouseEnter) {
@@ -1070,14 +1058,14 @@ var SuggestionsOverlay = /*#__PURE__*/function (_Component) {
         return null;
       }
 
-      return /*#__PURE__*/React.createElement("div", _extends({}, inline({
+      return React.createElement("div", _extends({}, inline({
         position: position || 'absolute',
         left: left,
         top: top
       }, style), {
         onMouseDown: onMouseDown,
         ref: containerRef
-      }), /*#__PURE__*/React.createElement("ul", _extends({
+      }), React.createElement("ul", _extends({
         ref: this.setUlElement,
         id: id,
         role: "listbox",
@@ -1107,7 +1095,7 @@ var SuggestionsOverlay = /*#__PURE__*/function (_Component) {
           query = queryInfo.query;
       var renderSuggestion = Children.toArray(this.props.children)[childIndex].props.renderSuggestion;
       var ignoreAccents = this.props.ignoreAccents;
-      return /*#__PURE__*/React.createElement(Suggestion$1, {
+      return React.createElement(Suggestion$1, {
         style: this.props.style('item'),
         key: "".concat(childIndex, "-").concat(getID(result)),
         id: getSuggestionHtmlId(this.props.id, index),
@@ -1132,7 +1120,7 @@ var SuggestionsOverlay = /*#__PURE__*/function (_Component) {
         return;
       }
 
-      return this.props.loader() || /*#__PURE__*/React.createElement(LoadingIndicator, {
+      return this.props.loader() || React.createElement(LoadingIndicator, {
         style: this.props.style('loadingIndicator')
       });
     }
@@ -1189,13 +1177,9 @@ var styled$2 = createDefaultStyle({
 });
 var SuggestionsOverlay$1 = styled$2(SuggestionsOverlay);
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _createSuper$3(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$3(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _isNativeReflectConstruct$3() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 var makeTriggerRegex = function makeTriggerRegex(trigger) {
   var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
@@ -1264,17 +1248,17 @@ var propTypes = {
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)]).isRequired
 };
 
-var MentionsInput = /*#__PURE__*/function (_React$Component) {
+var MentionsInput =
+/*#__PURE__*/
+function (_React$Component) {
   _inherits(MentionsInput, _React$Component);
-
-  var _super = _createSuper$3(MentionsInput);
 
   function MentionsInput(_props) {
     var _this;
 
     _classCallCheck(this, MentionsInput);
 
-    _this = _super.call(this, _props);
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MentionsInput).call(this, _props));
 
     _defineProperty(_assertThisInitialized(_this), "setContainerElement", function (el) {
       _this.containerElement = el;
@@ -1288,7 +1272,7 @@ var MentionsInput = /*#__PURE__*/function (_React$Component) {
 
       var props = omit(_this.props, ['style', 'classNames', 'className'], // substyle props
       keys(propTypes));
-      return _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, props), style('input')), {}, {
+      return _objectSpread({}, props, {}, style('input'), {
         value: _this.getPlainText()
       }, !readOnly && !disabled && {
         onChange: _this.handleChange,
@@ -1298,7 +1282,7 @@ var MentionsInput = /*#__PURE__*/function (_React$Component) {
         onCompositionStart: _this.handleCompositionStart,
         onCompositionEnd: _this.handleCompositionEnd,
         onScroll: _this.updateHighlighterScroll
-      }), _this.isOpened() && {
+      }, {}, _this.isOpened() && {
         role: 'combobox',
         'aria-controls': _this.uuidSuggestionsOverlay,
         'aria-expanded': true,
@@ -1315,18 +1299,18 @@ var MentionsInput = /*#__PURE__*/function (_React$Component) {
 
       var inputProps = _this.getInputProps();
 
-      return /*#__PURE__*/React.createElement("div", style('control'), _this.renderHighlighter(), singleLine ? _this.renderInput(inputProps) : _this.renderTextarea(inputProps));
+      return React.createElement("div", style('control'), _this.renderHighlighter(), singleLine ? _this.renderInput(inputProps) : _this.renderTextarea(inputProps));
     });
 
     _defineProperty(_assertThisInitialized(_this), "renderInput", function (props) {
-      return /*#__PURE__*/React.createElement("input", _extends({
+      return React.createElement("input", _extends({
         type: "text",
         ref: _this.setInputRef
       }, props));
     });
 
     _defineProperty(_assertThisInitialized(_this), "renderTextarea", function (props) {
-      return /*#__PURE__*/React.createElement("textarea", _extends({
+      return React.createElement("textarea", _extends({
         ref: _this.setInputRef
       }, props));
     });
@@ -1356,7 +1340,7 @@ var MentionsInput = /*#__PURE__*/function (_React$Component) {
           position = _this$state$suggestio.position,
           left = _this$state$suggestio.left,
           top = _this$state$suggestio.top;
-      var suggestionsNode = /*#__PURE__*/React.createElement(SuggestionsOverlay$1, {
+      var suggestionsNode = React.createElement(SuggestionsOverlay$1, {
         id: _this.uuidSuggestionsOverlay,
         style: _this.props.style('suggestions'),
         position: position,
@@ -1377,7 +1361,7 @@ var MentionsInput = /*#__PURE__*/function (_React$Component) {
       }, _this.props.children);
 
       if (_this.props.suggestionsPortalHost) {
-        return /*#__PURE__*/ReactDOM.createPortal(suggestionsNode, _this.props.suggestionsPortalHost);
+        return ReactDOM.createPortal(suggestionsNode, _this.props.suggestionsPortalHost);
       } else {
         return suggestionsNode;
       }
@@ -1392,7 +1376,7 @@ var MentionsInput = /*#__PURE__*/function (_React$Component) {
           children = _this$props3.children,
           value = _this$props3.value,
           style = _this$props3.style;
-      return /*#__PURE__*/React.createElement(Highlighter$1, {
+      return React.createElement(Highlighter$1, {
         containerRef: _this.setHighlighterElement,
         style: style('highlighter'),
         value: value,
@@ -1826,7 +1810,7 @@ var MentionsInput = /*#__PURE__*/function (_React$Component) {
       if (queryId !== _this._queryId) return; // save in property so that multiple sync state updates from different mentions sources
       // won't overwrite each other
 
-      _this.suggestions = _objectSpread(_objectSpread({}, _this.suggestions), {}, _defineProperty({}, childIndex, {
+      _this.suggestions = _objectSpread({}, _this.suggestions, _defineProperty({}, childIndex, {
         queryInfo: {
           childIndex: childIndex,
           query: query,
@@ -1865,7 +1849,13 @@ var MentionsInput = /*#__PURE__*/function (_React$Component) {
 
       if (beforeAdd) {
         var res = beforeAdd(id, display);
-        if (res) return;
+
+        if (res) {
+          // Re-run getData
+          _this.updateMentionsQueries(getPlainText(_this.inputElement.value, config), _this.inputElement.selectionStart);
+
+          return;
+        }
       }
 
       var start = mapPlainTextIndex(value, config, querySequenceStart, 'START');
@@ -1979,7 +1969,7 @@ var MentionsInput = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React.createElement("div", _extends({
+      return React.createElement("div", _extends({
         ref: this.setContainerElement
       }, this.props.style), this.renderControl(), this.renderSuggestionsOverlay());
     }
@@ -2009,7 +1999,7 @@ var MentionsInput = /*#__PURE__*/function (_React$Component) {
       var newValue = spliceString(value, markupStartIndex, markupEndIndex, pastedMentions || pastedData).replace(/\r/g, '');
       var newPlainTextValue = getPlainText(newValue, config);
       var eventMock = {
-        target: _objectSpread(_objectSpread({}, event.target), {}, {
+        target: _objectSpread({}, event.target, {
           value: newValue
         })
       };
@@ -2074,7 +2064,7 @@ var MentionsInput = /*#__PURE__*/function (_React$Component) {
       var newValue = [value.slice(0, markupStartIndex), value.slice(markupEndIndex)].join('');
       var newPlainTextValue = getPlainText(newValue, config);
       var eventMock = {
-        target: _objectSpread(_objectSpread({}, event.target), {}, {
+        target: _objectSpread({}, event.target, {
           value: newPlainTextValue
         })
       };
@@ -2172,7 +2162,7 @@ var Mention = function Mention(_ref) {
     className: className,
     classNames: classNames
   });
-  return /*#__PURE__*/React.createElement("strong", styles, display);
+  return React.createElement("strong", styles, display);
 };
 
 Mention.propTypes = {
