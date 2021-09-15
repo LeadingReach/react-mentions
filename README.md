@@ -1,3 +1,7 @@
+# LeadingReach Notes
+
+When updating the master branch, be sure to bump the version number in `package.json` so the new version will be updated in apphead when `yarn` or `yarn install` is run. You may have to run `yarn upgrade react-mentions` to force it to update.
+
 # [React Mentions](https://react-mentions.now.sh)
 
 [![CircleCI][build-badge]][build]
