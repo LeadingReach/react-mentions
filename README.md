@@ -2,6 +2,24 @@
 
 When updating the master branch, be sure to bump the version number in `package.json` so the new version will be updated in apphead when `yarn` or `yarn install` is run. You may have to run `yarn upgrade react-mentions` to force it to update.
 
+## rational for fork
+- needed access to properties not permitted by the original author
+- used by apphead
+
+## what changed
+- getData exposed to outside world so that data can come from two different sources (see history)
+- package would not build with yarn without node-gyp dependency added as a dev dependency
+
+## testing
+- apphead has unit tests 
+
+## packaging 
+- requires node-gyp `npm i -G node-gyp`
+- `yarn build`
+- `yarn pack --out %s-v%v.tgz`
+
+
+
 # [React Mentions](https://react-mentions.now.sh)
 
 [![CircleCI][build-badge]][build]
